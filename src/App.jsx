@@ -3,31 +3,6 @@ import { useEffect, useState } from "react";
 import Form from "./components/Form";
 import Post from "./components/Post";
 
-import express from 'express';
-import { Pool } from 'pg';
-import dotenv from 'dotenv';
-//const express = require('express');
-//const {Pool} = require('pg');
-//const dotenv = require('dotenv');
-
-dotenv.config();
-const app = express();
-const port = process.env.PORT || 3000;
-
-const pool = new Pool({
-  user: process.env.PGUSER,
-  host: process.env.PGHOST,
-  database: process.env.PGDATABASE,
-  password: process.env.PGPASSWORD,
-  port: process.env.PGPORT,
-
-});
-app.use(express.json());
-
-app.listen(port, () => {
-  console.log(`Servidor Encendido, puerto ${port}`)
-});
-
 
 const urlBaseServer = "http://localhost:3000";
 
