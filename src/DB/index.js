@@ -62,3 +62,18 @@ app.delete("/posts/:id", async (req, res) => {
         return res.status(500).json({ message: "Internal server error" });
     }
 });
+
+app.put("/posts/:id", async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const post = await connection.update(id);
+        if (!post) {
+            return res.status(404).json({ message: "Post no encontrado" });
+        }
+        return res.json(post);
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error"});
+    }
+});
